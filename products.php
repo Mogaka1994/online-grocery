@@ -7,31 +7,31 @@ error_reporting(E_ERROR);
 include ("inc/header.php");
 include ("inc/db.php");
 if(!empty($_GET["action"])) {
-switch($_GET["action"]) {
-    case "add":
-        $productById = "SELECT * FROM product WHERE id='" . $_GET["id"] . "'";
-        $result = mysqli_query($dblink, $productById);
-        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-        $name = $row[product_name];
-        $price =$row[price];
-        $disc =$row[discount];
-        $sqlns = "INSERT INTO ordders(product,amount,discount) VALUES ('$name','$price','$disc')";
-        file_put_contents("log.txt","$sqlns",FILE_APPEND);
-        $rss   = mysqli_query($dblink,$sqlns);
-        if($result){
-            $response ="<div class='alert alert-success'>Product Added to Cart Successfully</div>";
-            ?>
-            <script>
-                window.location.href = "checkout.php";
-            </script>
-            <?php
-        }else{
-            $response ="<div class='alert alert-danger'>Failed to Add Product to Cart </div>";
-        }
-        mysqli_free_result($rss);
-        mysqli_close($dblink);
-        break;
-}
+    switch($_GET["action"]) {
+        case "add":
+            $productById = "SELECT * FROM product WHERE id='" . $_GET["id"] . "'";
+            $result = mysqli_query($dblink, $productById);
+            $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+            $name = $row[product_name];
+            $price =$row[price];
+            $disc =$row[discount];
+            $sqlns = "INSERT INTO ordders(product,amount,discount) VALUES ('$name','$price','$disc')";
+            file_put_contents("log.txt","$sqlns",FILE_APPEND);
+            $rss   = mysqli_query($dblink,$sqlns);
+            if($result){
+                $response ="<div class='alert alert-success'>Product Added to Cart Successfully</div>";
+                ?>
+                <script>
+                    window.location.href = "checkout.php";
+                </script>
+                <?php
+            }else{
+                $response ="<div class='alert alert-danger'>Failed to Add Product to Cart </div>";
+            }
+            mysqli_free_result($rss);
+            mysqli_close($dblink);
+            break;
+    }
 }
 if(isset($_POST['btn-subscribe'])){
     $email = $_POST['email'];
@@ -76,7 +76,7 @@ if(isset($_POST['btn-subscribe'])){
     </div>
     <div class="w3l_banner_nav_right">
         <div class="w3l_banner_nav_right_banner3">
-            <h3>Making your Shopping for Grocery Easier<span class="blink_me"></span></h3>
+            <h3>Making your <span>grocery</span> Shopping easier.<br><div class="text-center">Poliet Ramona</div> </h3>
         </div>
         <div class="w3l_banner_nav_right_banner3_btm">
             <div class="clearfix"> </div>
@@ -91,61 +91,61 @@ if(isset($_POST['btn-subscribe'])){
                 while($row = mysqli_fetch_array($result)){
                     ?>
                     <div class="col-md-3 w3ls_w3l_banner_left">
-                    <div class="hover14 column">
-                        <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                            <div class="agile_top_brand_left_grid_pos">
-                                <img src="images/offer.png" alt=" " class="img-responsive" />
-                            </div>
-                            <div class="agile_top_brand_left_grid1">
-                                <figure>
-                                    <div class="snipcart-item block">
-                                        <div class="snipcart-thumb">
-                                            <a href="single.php"><img src="web/images/<?php echo $row[product_img];?>" alt=" " class="img-responsive" /></a>
+                        <div class="hover14 column">
+                            <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+                                <div class="agile_top_brand_left_grid_pos">
+                                    <img src="images/offer.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="agile_top_brand_left_grid1">
+                                    <figure>
+                                        <div class="snipcart-item block">
+                                            <div class="snipcart-thumb">
+                                                <a href="single.php"><img src="web/images/<?php echo $row[product_img];?>" alt=" " class="img-responsive" /></a>
 
-                                            <p><?php echo $row[product_name];?></p>
-                                            <h4><?php $var ="Ksh";echo $var." ".$row[price];?><span>Ksh<?php $var =00;echo $row[discount].".".$var;?></span></h4>
-                                        </div>
-                                        <div class="snipcart-details">
-<!--                                            --><?php
-//                                            if(isset($_POST['btn-submit'])){
+                                                <p><?php echo $row[product_name];?></p>
+                                                <h4><?php $var ="Ksh";echo $var." ".$row[price];?><span>Ksh<?php $var =00;echo $row[discount].".".$var;?></span></h4>
+                                            </div>
+                                            <div class="snipcart-details">
+                                                <!--                                            --><?php
+                                                //                                            if(isset($_POST['btn-submit'])){
 
-//                                                $row[product_name] =$_POST['item_name'];
-//                                                $row[price]=$_POST['amount'];
-//                                                $row[discount_amount] =$_POST['discount_amount'];
-//                                                $sqlns ="INSERT INTO ordders(product_name,amount,discount)SELECT product_name,price,discount FROM product";
-//
-//                                                file_put_contents("log.txt","$sqlns",FILE_APPEND);
-//                                                if(mysqli_query($dblink,$sqlns)){
-//                                                    $response ="<div class='alert alert-success'>Product Added to Cart Successfully</div>";
-//                                                }else{
-//                                                    $response ="<div class='alert alert-success'>Failed to Add Product to Cart</div>";
-//                                                }
-//                                            }
-//                                            ?>
-                                            <form  method="POST"  action="products.php?action=add&id=<?php echo $row[id]; ?>">
-                                                <fieldset>
-<!--                                                    <input type="hidden" name="cmd" value="_cart" />-->
-<!--                                                    <input type="hidden" name="add" value="1" />-->
-<!--                                                    <input type="hidden" name="business" value=" " />-->
-                                                    <input type="hidden" name="item_name" value="<?php echo $row[product_name];?>" />
-                                                    <input type="hidden" name="amount" value="<?php echo $row[price];?>" />
-                                                    <input type="hidden" name="discount_amount" value="<?php $var =00;echo $row[discount].".".$var;?>" />
-<!--                                                    <input type="hidden" name="currency_code" value="USD" />-->
-<!--                                                    <input type="hidden" name="return" value=" " />-->
-<!--                                                    <input type="hidden" name="cancel_return" value=" " />-->
-                                                    <input type="submit" value="Order" class="button" />
-                                                </fieldset>
-                                            </form>
+                                                //                                                $row[product_name] =$_POST['item_name'];
+                                                //                                                $row[price]=$_POST['amount'];
+                                                //                                                $row[discount_amount] =$_POST['discount_amount'];
+                                                //                                                $sqlns ="INSERT INTO ordders(product_name,amount,discount)SELECT product_name,price,discount FROM product";
+                                                //
+                                                //                                                file_put_contents("log.txt","$sqlns",FILE_APPEND);
+                                                //                                                if(mysqli_query($dblink,$sqlns)){
+                                                //                                                    $response ="<div class='alert alert-success'>Product Added to Cart Successfully</div>";
+                                                //                                                }else{
+                                                //                                                    $response ="<div class='alert alert-success'>Failed to Add Product to Cart</div>";
+                                                //                                                }
+                                                //                                            }
+                                                //                                            ?>
+                                                <form  method="POST"  action="products.php?action=add&id=<?php echo $row[id]; ?>">
+                                                    <fieldset>
+                                                        <!--                                                    <input type="hidden" name="cmd" value="_cart" />-->
+                                                        <!--                                                    <input type="hidden" name="add" value="1" />-->
+                                                        <!--                                                    <input type="hidden" name="business" value=" " />-->
+                                                        <input type="hidden" name="item_name" value="<?php echo $row[product_name];?>" />
+                                                        <input type="hidden" name="amount" value="<?php echo $row[price];?>" />
+                                                        <input type="hidden" name="discount_amount" value="<?php $var =00;echo $row[discount].".".$var;?>" />
+                                                        <!--                                                    <input type="hidden" name="currency_code" value="USD" />-->
+                                                        <!--                                                    <input type="hidden" name="return" value=" " />-->
+                                                        <!--                                                    <input type="hidden" name="cancel_return" value=" " />-->
+                                                        <input type="submit" value="Order" class="button" />
+                                                    </fieldset>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
-                                </figure>
+                                    </figure>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    </div>
-                <?php
+                    <?php
                 }
-               // print_r($rows);
+                // print_r($rows);
                 mysqli_free_result($result);
                 mysqli_close($dblink);
                 ?>

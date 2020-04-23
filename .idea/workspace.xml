@@ -2,25 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45e62f70-f1e3-41c4-b9eb-02c836e7cef0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/web/mail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/about.php" beforeDir="false" afterPath="$PROJECT_DIR$/about.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/checkout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dairy_egg.php" beforeDir="false" afterPath="$PROJECT_DIR$/dairy_egg.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fruits.php" beforeDir="false" afterPath="$PROJECT_DIR$/fruits.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocery.php" beforeDir="false" afterPath="$PROJECT_DIR$/grocery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inc/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/inc/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inc/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/inc/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inc/main_sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/inc/main_sidebar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/mail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products.php" beforeDir="false" afterPath="$PROJECT_DIR$/products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/single.php" beforeDir="false" afterPath="$PROJECT_DIR$/single.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vegetables.php" beforeDir="false" afterPath="$PROJECT_DIR$/vegetables.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/web/sidebar.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +39,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -112,7 +98,7 @@
       <workItem from="1587061720485" duration="1775000" />
       <workItem from="1587124723285" duration="69000" />
       <workItem from="1587124812928" duration="579000" />
-      <workItem from="1587635368553" duration="49000" />
+      <workItem from="1587635368553" duration="1234000" />
     </task>
     <servers />
   </component>

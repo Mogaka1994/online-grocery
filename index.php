@@ -65,7 +65,7 @@ if(isset($_POST['btn-subscribe'])){
                 <ul class="slides">
                     <li>
                         <div class="w3l_banner_nav_right_banner">
-                            <h3>Making your <span>grocery</span> Shopping easier.</h3>
+                            <h3>Making your <span>grocery</span> Shopping easier.<br><div class="text-center">Poliet Ramona</div> </h3>
                             <div class="more">
                                 <a href="products.php" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
                             </div>

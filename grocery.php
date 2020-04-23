@@ -73,8 +73,7 @@ if(isset($_POST['btn-subscribe'])){
     </div>
     <div class="w3l_banner_nav_right">
         <div class="w3l_banner_nav_right_banner9 w3l_banner_nav_right_banner_pet">
-            <h3>Making your Shopping for Grocery Easier<span class="blink_me"></span></h3>
-            <p>Ramona Pauliet</p>
+            <h3>Making your <span>grocery</span> Shopping easier.<br><div class="text-center">Poliet Ramona</div> </h3>
             <a href="single.php">Shop Now</a>
         </div>
         <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">

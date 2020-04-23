@@ -66,13 +66,13 @@ if(isset($_POST['btn-subscribe'])){
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <?php
-             include ("inc/main_sidebar.php");
+            include ("inc/main_sidebar.php");
             ?>
         </nav>
     </div>
     <div class="w3l_banner_nav_right">
         <div class="w3l_banner_nav_right_banner8">
-            <h3>Making your Shopping for Grocery Easier<span class="blink_me"></span></h3>
+            <h3>Making your <span>grocery</span> Shopping easier.<br><div class="text-center">Poliet Ramona</div> </h3>
         </div>
         <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
             <h3 class="w3l_fruit">Home Grown Fruits</h3><?php echo $response;?>
@@ -98,13 +98,13 @@ if(isset($_POST['btn-subscribe'])){
                                         <div class="snipcart-details">
                                             <form  method="POST"  action="fruits.php?action=add&id=<?php echo $row[id]; ?>">
                                                 <fieldset>
-<!--                                                    <input type="hidden" name="cmd" value="_cart" />-->
-<!--                                                    <input type="hidden" name="add" value="1" />-->
-<!--                                                    <input type="hidden" name="business" value=" " />-->
+                                                    <!--                                                    <input type="hidden" name="cmd" value="_cart" />-->
+                                                    <!--                                                    <input type="hidden" name="add" value="1" />-->
+                                                    <!--                                                    <input type="hidden" name="business" value=" " />-->
                                                     <input type="hidden" name="item_name" value="<?php echo $row[product_name];?>" />
                                                     <input type="hidden" name="amount" value="<?php echo $row[price];?>" />
                                                     <input type="hidden" name="discount_amount" value="<?php $var =00;echo $row[discount].".".$var;?>" />
-<!--                                                    <input type="hidden" name="currency_code" value="USD" />-->
+                                                    <!--                                                    <input type="hidden" name="currency_code" value="USD" />-->
                                                     <input type="hidden" name="return" value=" " />
                                                     <input type="hidden" name="cancel_return" value=" " />
                                                     <input type="submit" value="Add to Cart" class="button" />
@@ -118,9 +118,9 @@ if(isset($_POST['btn-subscribe'])){
                     </div>
                 </div>
                 <?php
-                }
-                mysqli_free_result($result);
-                mysqli_close($dblink);
+            }
+            mysqli_free_result($result);
+            mysqli_close($dblink);
             ?>
         </div>
     </div>
@@ -144,7 +144,7 @@ if(isset($_POST['btn-subscribe'])){
 </div>
 <!-- //newsletter -->
 <?php
-    include ("inc/footer.php");
+include ("inc/footer.php");
 ?>
 ?>
 </body>
