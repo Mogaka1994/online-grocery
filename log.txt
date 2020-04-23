@@ -1,0 +1,1 @@
+insert into emails (email) values ('mogaka.polycarp@students.jkuat.ac.ke')

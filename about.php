@@ -3,6 +3,18 @@ author:Polycarp
 -->
 <?php
  include("inc/header.php");
+include("inc/db.php");
+
+if(isset($_POST['btn-subscribe'])){
+    $email = $_POST['email'];
+    $stmt  = "insert into emails (email) values ('$email')";
+    file_put_contents("log.txt","$stmt",FILE_APPEND);
+    if(mysqli_query($dblink,$stmt)){
+        $response ="<div class='alert alert-success'>Subscribed  Successfully</div>";
+    }else{
+        $response ="<div class='alert alert-success'>Mail Subscription Failed</div>";
+    }
+}
 ?>
 <!-- products-breadcrumb -->
 <div class="products-breadcrumb">
@@ -94,15 +106,16 @@ author:Polycarp
     </div>
 </div>
 <!-- newsletter -->
+<!-- Newsletter -->
 <div class="newsletter">
     <div class="container">
         <div class="w3agile_newsletter_left">
             <h3>sign up for our newsletter</h3>
         </div>
         <div class="w3agile_newsletter_right">
-            <form action="#" method="post">
-                <input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-                <input type="submit" value="subscribe now">
+            <form action="about.php" method="post"><?php echo $response;?>
+                <input type="email" name="email" value="email"  required="">
+                <input type="submit"  name="btn-subscribe" value="subscribe now">
             </form>
         </div>
         <div class="clearfix"> </div>

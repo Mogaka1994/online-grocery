@@ -29,6 +29,16 @@ if(!empty($_GET["action"])) {
             break;
     }
 }
+if(isset($_POST['btn-subscribe'])){
+    $email = $_POST['email'];
+    $stmt  = "insert into emails (email) values ('$email')";
+    file_put_contents("log.txt","$stmt",FILE_APPEND);
+    if(mysqli_query($dblink,$stmt)){
+        $response ="<div class='alert alert-success'>Subscribed  Successfully</div>";
+    }else{
+        $response ="<div class='alert alert-success'>Mail Subscription Failed</div>";
+    }
+}
 ?>
 <!-- //header -->
 <!-- products-breadcrumb -->
@@ -62,7 +72,7 @@ if(!empty($_GET["action"])) {
     </div>
     <div class="w3l_banner_nav_right">
         <div class="w3l_banner_nav_right_banner10">
-            <h3>Best Deals For Dairy and Egg Products<span class="blink_me"></span></h3>
+            <h3>Making your Shopping for Grocery Easier<span class="blink_me"></span></h3>
         </div>
         <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_veg">
             <h3 class="w3l_fruit">Frozen Food</h3><?php echo $response;?>
@@ -125,9 +135,9 @@ if(!empty($_GET["action"])) {
             <h3>sign up for our newsletter</h3>
         </div>
         <div class="w3agile_newsletter_right">
-            <form action="#" method="post">
-                <input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-                <input type="submit" value="subscribe now">
+            <form action="dairy_egg.php" method="post"><?php echo $response;?>
+                <input type="email" name="email" value="email"  required="">
+                <input type="submit"  name="btn-subscribe" value="subscribe now">
             </form>
         </div>
         <div class="clearfix"> </div>

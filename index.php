@@ -28,6 +28,16 @@ if(!empty($_GET["action"])) {
             break;
     }
 }
+if(isset($_POST['btn-subscribe'])){
+    $email = $_POST['email'];
+    $stmt  = "insert into emails (email) values ('$email')";
+    file_put_contents("log.txt","$stmt",FILE_APPEND);
+    if(mysqli_query($dblink,$stmt)){
+        $response ="<div class='alert alert-success'>Subscribed  Successfully</div>";
+    }else{
+        $response ="<div class='alert alert-success'>Mail Subscription Failed</div>";
+    }
+}
 ?>
 <!-- //header -->
 <!-- banner -->
@@ -55,7 +65,7 @@ if(!empty($_GET["action"])) {
                 <ul class="slides">
                     <li>
                         <div class="w3l_banner_nav_right_banner">
-                            <h3>Make your <span>food</span> with Spicy.</h3>
+                            <h3>Making your <span>grocery</span> Shopping easier.</h3>
                             <div class="more">
                                 <a href="products.php" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
                             </div>
@@ -63,7 +73,7 @@ if(!empty($_GET["action"])) {
                     </li>
                     <li>
                         <div class="w3l_banner_nav_right_banner1">
-                            <h3>Make your <span>food</span> with Spicy.</h3>
+                            <h3>Making your <span>grocery</span> Shopping easier.</h3>
                             <div class="more">
                                 <a href="products.php" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
                             </div>
@@ -142,41 +152,41 @@ if(!empty($_GET["action"])) {
             while($row = mysqli_fetch_array($result)) {
                 ?>
                 <div class="col-md-3 top_brand_left" >
-                <div class="hover14 column" >
-                    <div class="agile_top_brand_left_grid" >
-                        <div class="tag" ><img src = "images/tag.png" alt = " " class="img-responsive" /></div >
-                        <div class="agile_top_brand_left_grid1" >
-                            <figure>
-                                <div class="snipcart-item block">
-                                    <div class="snipcart-thumb">
-                                        <a href="single.php"><img src="web/images/<?php echo $row[product_img];?>" alt=" " class="img-responsive" /></a>
+                    <div class="hover14 column" >
+                        <div class="agile_top_brand_left_grid" >
+                            <div class="tag" ><img src = "images/tag.png" alt = " " class="img-responsive" /></div >
+                            <div class="agile_top_brand_left_grid1" >
+                                <figure>
+                                    <div class="snipcart-item block">
+                                        <div class="snipcart-thumb">
+                                            <a href="single.php"><img src="web/images/<?php echo $row[product_img];?>" alt=" " class="img-responsive" /></a>
 
-                                        <p><?php echo $row[product_name];?></p>
-                                        <h4><?php $var ="Ksh";echo $var." ".$row[price];?><span>Ksh<?php $var =00;echo $row[discount].".".$var;?></span></h4>
+                                            <p><?php echo $row[product_name];?></p>
+                                            <h4><?php $var ="Ksh";echo $var." ".$row[price];?><span>Ksh<?php $var =00;echo $row[discount].".".$var;?></span></h4>
+                                        </div>
+                                        <div class="snipcart-details">
+                                            <form  method="POST"  action="index.php?action=add&id=<?php echo $row[id]; ?>">
+                                                <fieldset>
+                                                    <!--<input type="hidden" name="cmd" value="_cart" />-->
+                                                    <!--<input type="hidden" name="add" value="1" />-->
+                                                    <!--<input type="hidden" name="business" value=" " />-->
+                                                    <input type="hidden" name="item_name" value="<?php echo $row[product_name];?>" />
+                                                    <input type="hidden" name="amount" value="<?php echo $row[price];?>" />
+                                                    <input type="hidden" name="discount_amount" value="<?php $var =00;echo $row[discount].".".$var;?>" />
+                                                    <!--<input type="hidden" name="currency_code" value="USD" />-->
+                                                    <!--<input type="hidden" name="return" value=" " />-->
+                                                    <!--<input type="hidden" name="cancel_return" value=" " />-->
+                                                    <input type="submit" value="Add to Cart" class="button" />
+                                                </fieldset>
+                                            </form>
+                                        </div>
                                     </div>
-                                    <div class="snipcart-details">
-                                        <form  method="POST"  action="index.php?action=add&id=<?php echo $row[id]; ?>">
-                                            <fieldset>
-                                                <!--<input type="hidden" name="cmd" value="_cart" />-->
-                                                <!--<input type="hidden" name="add" value="1" />-->
-                                                <!--<input type="hidden" name="business" value=" " />-->
-                                                <input type="hidden" name="item_name" value="<?php echo $row[product_name];?>" />
-                                                <input type="hidden" name="amount" value="<?php echo $row[price];?>" />
-                                                <input type="hidden" name="discount_amount" value="<?php $var =00;echo $row[discount].".".$var;?>" />
-                                                <!--<input type="hidden" name="currency_code" value="USD" />-->
-                                                <!--<input type="hidden" name="return" value=" " />-->
-                                                <!--<input type="hidden" name="cancel_return" value=" " />-->
-                                                <input type="submit" value="Add to Cart" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                </div>
-                            </figure>
+                                </figure>
+                            </div >
                         </div >
                     </div >
                 </div >
-            </div >
-            <?php
+                <?php
             }
             ?>
             <div class="clearfix"> </div>
@@ -192,16 +202,12 @@ if(!empty($_GET["action"])) {
             <div class="col-md-3 w3l_fresh_vegetables_grid w3l_fresh_vegetables_grid_left">
                 <div class="w3l_fresh_vegetables_grid2">
                     <ul>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">All Brands</a></li>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="vegetables.php">Vegetables</a></li>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="vegetables.php">Fruits</a></li>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="drinks.html">Juices</a></li>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="grocery.php">Pet Food</a></li>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="bread.html">Bread & Bakery</a></li>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="household.php">Cleaning</a></li>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Spices</a></li>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Dry Fruits</a></li>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Dairy Products</a></li>
+                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="index.php">All Brands</a></li>
+                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="vegetables.php">VEGETABLES</a></li>
+                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="fruits.php">FRUITS</a></li>
+                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="product.php">CEREALS</a></li>
+                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="dairy_egg.php">DAIRY & EGGS</a></li>
+                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="dairy_egg.php">SPICES</a></li>
                     </ul>
                 </div>
             </div>
@@ -260,9 +266,9 @@ if(!empty($_GET["action"])) {
             <h3>sign up for our newsletter</h3>
         </div>
         <div class="w3agile_newsletter_right">
-            <form action="#" method="post">
-                <input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-                <input type="submit" value="subscribe now">
+            <form action="index.php" method="post"><?php echo $response;?>
+                <input type="email" name="email" value="email"  required="">
+                <input type="submit"  name="btn-subscribe" value="subscribe now">
             </form>
         </div>
         <div class="clearfix"> </div>
@@ -271,7 +277,7 @@ if(!empty($_GET["action"])) {
 <!-- //newsletter -->
 <!-- footer -->
 <?php
-    include ("inc/footer.php");
+include ("inc/footer.php");
 ?>
 </body>
 </html>

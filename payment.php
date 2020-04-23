@@ -57,7 +57,7 @@ include ("inc/header.php");
                                     <div class="check_box_one cashon_delivery">
                                         <label class="anim">
                                             <input type="checkbox" class="checkbox">
-                                            <span>Buy Goods and Services Till No:123456789</span>
+                                            <span>Buy Goods and Services Till No:5166893</span>
                                         </label>
                                     </div>
 

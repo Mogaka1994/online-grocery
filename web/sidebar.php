@@ -30,6 +30,7 @@
             <li><a href="usermgnt.php"><i class="fa fa-picture-o" aria-hidden="true"></i><span>User Management</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
                 <ul>
                     <li><a href="usermgnt.php">Manage Users</a></li>
+                    <li><a href="mail.php">Send Mail to Users</a></li>
                     <li><a href="Suppliers.php">Manage Suppliers</a></li>
                 </ul>
             </li>
